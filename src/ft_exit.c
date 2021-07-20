@@ -2,6 +2,12 @@
 
 void    ft_exit(char *str, int status)
 {
-    perror(str);
+    ft_putendl_fd(str, STDERR_FILENO);
     exit(status);
+}
+
+void    ft_exit_errno(char *str, int status)
+{
+    errno = status;
+    perror(str);
 }
