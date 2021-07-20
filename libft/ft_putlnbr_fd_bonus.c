@@ -1,9 +1,9 @@
 #include "libft.h"
 
-static int	ft_numsize(int *n, int fd)
+static int	ft_numsize(long long *n, int fd)
 {
-	int	size;
-	int	save;
+	int			size;
+	long long	save;
 
 	size = 0;
 	if (*n < 0)
@@ -17,13 +17,15 @@ static int	ft_numsize(int *n, int fd)
 	return (size);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putlnbr_fd(long long n, int fd)
 {
-	char	s[11];
+	char	s[21];
 	int		i;
 
-	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
+	if (n == -9223372036854775807)
+	{
+		write (fd, "-9223372036854775807", 20);
+	}
 	else if (n == 0)
 		write(fd, "0", 1);
 	else

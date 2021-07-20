@@ -18,7 +18,15 @@ SRC :=	ft_memset.c		ft_bzero.c		ft_memcpy.c		\
 #bonnus 
 BSRC := ft_lstnew.c 	ft_lstadd_front.c 	ft_lstsize.c 	\
 		ft_lstlast.c 	ft_lstadd_back.c 	ft_lstdelone.c 	\
-		ft_lstclear.c	ft_lstiter.c		ft_lstmap.c
+		ft_lstclear.c	ft_lstiter.c		ft_lstmap.c		\
+		ft_putptr_fd_bonus.c			ft_hex_digit_bonus.c \
+		ft_putnbr_fd_size_bonus.c		ft_putnbr_base_fd_size_bonus.c\
+		ft_putptr_fd_size_bonus.c		ft_putnbr_unsigned_fd_size_bonus.c\
+		ft_putstr_fd_size_bonus.c 		ft_putlnbr_fd_size_bonus.c \
+		ft_putlnbr_fd_bonus.c 			ft_putdbl_fd_size_bonus.c \
+		ft_putdbl_fd_bonus.c 			ft_putchar_fd_size_bonus.c\
+		ft_putnbr_base_fd_bonus.c		ft_putnbr_unsigned_fd_bonus.c 
+
 
 OBJ := ${SRC:%.c=%.o}
 
