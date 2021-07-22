@@ -15,21 +15,14 @@ char	*ft_getPATH(char **envp)
 			return (envp[i]);
 		i++;
 	}
+	return (NULL);
 }
 
-char	*ft_which(char	*cmd, char **envp)
+static char	*ft_check_possible(char	**paths, char *scmd)
 {
-	char	**paths;
-	char	**save;
-	char	*scmd;
 	char	*pcmd;
-	char	*p;
 
-	if (!cmd || !envp || !(*envp))
-		return (NULL);
-	scmd = ft_strjoin("/", cmd);
-	paths = ft_split(ft_getPATH(envp) + 5, ':');
-	save = paths;
+	pcmd = NULL;
 	while (*paths)
 	{
 		pcmd = ft_strjoin(*(paths++), scmd);
@@ -38,11 +31,26 @@ char	*ft_which(char	*cmd, char **envp)
 		free(pcmd);
 		pcmd = NULL;
 	}
-	paths = NULL;
-	ft_free_split(&save);
+	return (pcmd);
+}
+
+char	*ft_which(char	*cmd, char **envp)
+{
+	char	**paths;
+	char	**save;
+	char	*scmd;
+	char	*pcmd;
+
+	if (!cmd || !envp || !(*envp))
+		return (NULL);
+	scmd = ft_strjoin("/", cmd);
+	paths = ft_split(ft_getPATH(envp) + 5, ':');
+	pcmd = ft_check_possible(paths, scmd);
+	ft_free_split(&paths);
 	free(scmd);
+	scmd = NULL;
 	if (pcmd == NULL)
-		return (cmd);
+		return (ft_strdup(cmd));
 	return (pcmd);
 }
 
