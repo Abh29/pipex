@@ -29,7 +29,7 @@ char	*ft_strdup(const char *s1)
 	size_t	size;
 	char	*save;
 
-	size = ft_strlen(s1);
+	size = ft_strlen_(s1);
 	out = (char *)malloc(size + 1);
 	if (out == NULL)
 		return (NULL);
@@ -48,8 +48,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	size = ft_strlen(s1);
-	size += ft_strlen(s2);
+	size = ft_strlen_(s1);
+	size += ft_strlen_(s2);
 	out = malloc(size + 1);
 	if (out == NULL)
 		return (NULL);

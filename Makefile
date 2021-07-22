@@ -1,5 +1,6 @@
 #first parts 
-SRC :=	src/ft_exit.c gnl/get_next_line.c gnl/get_next_line_utils.c
+SRC :=	src/ft_exit.c gnl/get_next_line.c gnl/get_next_line_utils.c \
+		src/pipex_utils.c src/ft_path.c
 
 #bonnus 
 BSRC := ft_lstnew.c 	ft_lstadd_front.c 	ft_lstsize.c 	\
@@ -13,6 +14,7 @@ BOBJ := $(BSRC:%.c=%.o)
 CC = gcc
 
 FLGS = -Wall -Werror -Wextra -D BUFFER_SIZE=42
+FBSIZE =	-D BUFFER_SIZE=42
 
 HEADER = pipex.h
 
@@ -54,6 +56,10 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean bonus so re
+test:
+	@make -C libft/
+	@$(CC) test.c $(FBSIZE) $(SRC) libft/libft.a  -o tst
+
+.PHONY: all clean fclean bonus so re test
 
 #&.c : &.o libft.a 
