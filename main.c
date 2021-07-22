@@ -91,6 +91,5 @@ int main(int argc, char **argv, char **envp)
     proc1(&data);
 	proc2(&data);
     ft_tidyup(&data);
-	printf("end of program !\n");
-    return 0;
+    return (0);
 }
