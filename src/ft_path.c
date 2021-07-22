@@ -20,6 +20,7 @@ char	*ft_getPATH(char **envp)
 char	*ft_which(char	*cmd, char **envp)
 {
 	char	**paths;
+	char	**save;
 	char	*scmd;
 	char	*pcmd;
 	char	*p;
@@ -28,6 +29,7 @@ char	*ft_which(char	*cmd, char **envp)
 		return (NULL);
 	scmd = ft_strjoin("/", cmd);
 	paths = ft_split(ft_getPATH(envp) + 5, ':');
+	save = paths;
 	while (*paths)
 	{
 		pcmd = ft_strjoin(*(paths++), scmd);
@@ -36,7 +38,8 @@ char	*ft_which(char	*cmd, char **envp)
 		free(pcmd);
 		pcmd = NULL;
 	}
-	ft_free_split(paths);	// free(paths); ??
+	paths = NULL;
+	ft_free_split(&save);
 	free(scmd);
 	if (pcmd == NULL)
 		return (cmd);

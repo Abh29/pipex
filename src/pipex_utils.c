@@ -1,16 +1,19 @@
 #include "../pipex.h"
 
-void    ft_free_split(char **split)
+
+void    ft_free_split(char ***split)
 {
-    if (split == NULL)
+	void *p = *split;
+
+    if (split == NULL || *split == NULL)
         return ;
-    while (*split != NULL)
+    while (**split != NULL)
     {
-        free(*split);
-        *split = NULL;
-        split++;
+        free(**split);
+        **split = NULL;
+        (*split)++;
     }
-    //p = NULL;
-    //free(*split);
-    //*split = NULL;
+	*split = NULL;
+	free(p);
+	p = NULL;
 }
