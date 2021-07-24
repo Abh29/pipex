@@ -4,10 +4,8 @@ static int	ft_numsize(int *n, int fd, size_t *fsize)
 {
 	int	size;
 	int	save;
-	int	neg;
 
 	size = 0;
-	neg = 0;
 	if (*n < 0)
 	{
 		*n *= -1;
@@ -36,10 +34,8 @@ void	ft_putnbr_fd_size(int n, int fd, size_t *size)
 {
 	char		s[11];
 	size_t		i;
-	long		width;
 
 	i = 0;
-	width = 0;
 	if (n == -2147483648 || n == 0)
 	{
 		ft_handle_null(n, fd, size);

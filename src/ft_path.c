@@ -37,7 +37,6 @@ static char	*ft_check_possible(char	**paths, char *scmd)
 char	*ft_which(char	*cmd, char **envp)
 {
 	char	**paths;
-	char	**save;
 	char	*scmd;
 	char	*pcmd;
 

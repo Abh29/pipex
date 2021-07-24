@@ -63,7 +63,6 @@ void	ft_putdbl_fd(float f, int fd, size_t precision)
 	t_putdbl_fd_bonus	vars;
 	char				*out;
 	int					idx;
-	size_t				j;
 
 	out = (char *)calloc(100, sizeof(char));
 	if (out == NULL)
@@ -74,7 +73,6 @@ void	ft_putdbl_fd(float f, int fd, size_t precision)
 	idx = 1;
 	out[idx++] = '.';
 	vars.floatpart *= 10;
-	j = 0;
 	vars.intpart = (int)(vars.floatpart);
 	ft_partone(out, precision, vars);
 	ft_putlast(out, precision, fd, vars.correctpart);

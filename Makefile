@@ -1,42 +1,36 @@
 #first parts 
-SRC :=	src/ft_exit.c gnl/get_next_line.c gnl/get_next_line_utils.c \
-		src/pipex_utils.c src/ft_path.c
+SRC :=	main.c src/ft_exit.c gnl/get_next_line.c gnl/get_next_line_utils.c \
+		src/pipex_utils.c src/ft_path.c 
 
 #bonnus 
-BSRC := ft_lstnew.c 	ft_lstadd_front.c 	ft_lstsize.c 	\
-		ft_lstlast.c 	ft_lstadd_back.c 	ft_lstdelone.c 	\
-		ft_lstclear.c	ft_lstiter.c		ft_lstmap.c
-
-OBJ := ${SRC:%.c=%.o}
-
-BOBJ := $(BSRC:%.c=%.o)
+BSRC :=	src/ft_exit.c gnl/get_next_line.c gnl/get_next_line_utils.c \
+		src/pipex_utils.c src/ft_path.c #main_bonus.c
 
 CC = gcc
 
-FLGS = -Wall -Werror -Wextra -D BUFFER_SIZE=42
+FLGS = -Wall -Werror -Wextra
 FBSIZE =	-D BUFFER_SIZE=42
 
 HEADER = pipex.h
+LIBFT = libft/libft.a
 
 NAME = pipex
 
 
-
-%.o : %.c
-	@echo "compiling ..."
-	$(CC) $(FLGS) -c $<
-
 all :$(NAME)
 	
-$(NAME): $(OBJ)
-	@echo "linking ..."
-	@ar rc $(NAME) $(OBJ)
-	@ranlib $(NAME)
+$(NAME): $(SRC) $(HEADER) $(LIBFT)
+	@echo "compiling ..."
+	@$(CC) $(FLGS) $(FBSIZE) $(SRC) $(LIBFT) -o $(NAME)
 
-bonus: $(BOBJ)
-	@echo "linking with bonus ..."
-	@ar rc $(NAME) $(BOBJ)
-	@ranlib $(NAME)
+bonus: $(BSRC) $(HEADER) $(LIBFT)
+	@echo "compiling bonus ..."
+	@rm -f $(NAME)
+	@$(CC) $(FLGS) $(FBSIZE) $(BSRC) $(LIBFT) -o $(NAME)
+
+$(LIBFT):
+	@make -C libft/
+	@make bonus -C libft/
 
 so:
 	@echo "clreating .so file ..."
@@ -46,19 +40,18 @@ so:
 
 clean:
 	@echo "cleaning all objects"
-	@rm -f $(OBJ)
-	@rm -f $(BOBJ)
+	@make clean -C libft/
 
 fclean: clean
 	@echo "cleaning every thing ..."
+	@make fclean -C libft/
 	@rm -f $(NAME)
-	@rm -f $(NAMESO)
 
 re: fclean all
 
 test:
 	@make -C libft/
-	@$(CC) test.c $(FBSIZE) $(SRC) libft/libft.a  -o tst
+	@$(CC) test.c $(FBSIZE) $(BSRC) libft/libft.a  -o tst
 
 .PHONY: all clean fclean bonus so re test
 
