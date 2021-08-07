@@ -4,7 +4,7 @@ SRC :=	main.c src/ft_exit.c gnl/get_next_line.c gnl/get_next_line_utils.c \
 
 #bonnus 
 BSRC :=	src/ft_exit.c gnl/get_next_line.c gnl/get_next_line_utils.c \
-		src/pipex_utils.c src/ft_path.c #main_bonus.c
+		src/pipex_utils.c src/ft_path.c src/ft_proc.c main_bonus.c
 
 CC = gcc
 

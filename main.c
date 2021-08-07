@@ -93,3 +93,10 @@ int main(int argc, char **argv, char **envp)
 	ft_tidyup(&data);
 	return (0);
 }
+
+
+/* 
+this is a test main 
+
+this is a nother test main 
+*/
