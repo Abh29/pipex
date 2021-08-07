@@ -25,7 +25,7 @@ static void	ft_init(t_data *data)
 	errno = 0;
 }
 
-static void	proc1(t_data *data)
+static void	proc_1(t_data *data)
 {
 	char	**save;
 
@@ -46,7 +46,7 @@ static void	proc1(t_data *data)
 	data->cmd1 = save;
 }
 
-static void	proc2(t_data *data)
+static void	proc_2(t_data *data)
 {
 	char	**save;
 
@@ -88,8 +88,8 @@ int main(int argc, char **argv, char **envp)
 	data.argv = argv;
 	data.envp = envp;
 	ft_init(&data);
-	proc1(&data);
-	proc2(&data);
+	proc_1(&data);
+	proc_2(&data);
 	ft_tidyup(&data);
 	return (0);
 }
