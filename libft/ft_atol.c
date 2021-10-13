@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mehill <mehill@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 20:32:45 by mehill            #+#    #+#             */
-/*   Updated: 2021/10/13 20:32:46 by mehill           ###   ########.fr       */
+/*   Created: 2021/10/13 20:32:50 by mehill            #+#    #+#             */
+/*   Updated: 2021/10/13 20:33:53 by mehill           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_firstcheck(const char **str, int *sign)
 		(*str)++;
 }
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
 	int					sign;
 	unsigned long long	out;
@@ -51,5 +51,5 @@ int	ft_atoi(const char *str)
 			return (1);
 		}
 	}
-	return ((int)(out * sign));
+	return ((long)(out * sign));
 }

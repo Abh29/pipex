@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mehill <mehill@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/13 20:53:08 by mehill            #+#    #+#             */
+/*   Updated: 2021/10/13 20:53:37 by mehill           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
@@ -21,28 +33,28 @@ typedef struct s_dpipe
 
 typedef struct s_data
 {
-    int		p[2];
-    int		argc;
-    char	**argv;
-    char	**envp;
+	int		p[2];
+	int		argc;
+	char	**argv;
+	char	**envp;
 	char	**cmd1;
 	char	**cmd2;
-    int		file1;
-    int		file2;
-    int		pid1;
-    int		pid2;
+	int		file1;
+	int		file2;
+	int		pid1;
+	int		pid2;
 }				t_data;
 
 typedef struct s_bdata
 {
 	int		pn[MAX_PIPE][2];
 	char	**cmdn[MAX_PIPE];
-    int		argc;
-    char	**argv;
-    char	**envp;
+	int		argc;
+	char	**argv;
+	char	**envp;
 	char	*lim;
-    int		file1;
-    int		file2;
+	int		file1;
+	int		file2;
 	int		n;
 }				t_bdata;
 
@@ -58,6 +70,5 @@ void	proc0(t_bdata *data);
 void	proc1(t_bdata *data);
 void	proci(t_bdata *data, int i);
 void	procn(t_bdata *data, int n);
-
 
 #endif

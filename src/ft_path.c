@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_path.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mehill <mehill@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/13 20:52:38 by mehill            #+#    #+#             */
+/*   Updated: 2021/10/13 20:52:39 by mehill           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../pipex.h"
 
 char	*ft_getPATH(char **envp)
@@ -11,7 +23,7 @@ char	*ft_getPATH(char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		if(ft_strnstr(envp[i], start, 5))
+		if (ft_strnstr(envp[i], start, 5))
 			return (envp[i]);
 		i++;
 	}
@@ -27,7 +39,7 @@ static char	*ft_check_possible(char	**paths, char *scmd)
 	{
 		pcmd = ft_strjoin(*(paths++), scmd);
 		if (access(pcmd, F_OK | X_OK) == 0)
-			break;
+			break ;
 		free(pcmd);
 		pcmd = NULL;
 	}

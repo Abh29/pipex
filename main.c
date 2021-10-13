@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mehill <mehill@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/13 20:52:58 by mehill            #+#    #+#             */
+/*   Updated: 2021/10/13 20:53:05 by mehill           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 static void	ft_init(t_data *data)
@@ -21,7 +33,7 @@ static void	ft_init(t_data *data)
 	data->cmd1 = ft_split_cmd(data->argv[2], data->envp);
 	data->cmd2 = ft_split_cmd(data->argv[3], data->envp);
 	if (!data->cmd1 || !data->cmd2)
-		ft_exit("Error : unexpected split error !",1);
+		ft_exit("Error : unexpected split error !", 1);
 	errno = 0;
 }
 
@@ -80,9 +92,9 @@ static void	ft_tidyup(t_data *data)
 	ft_free_split(&(data->cmd2));
 }
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
-	t_data  data;
+	t_data	data;
 
 	data.argc = argc;
 	data.argv = argv;
@@ -93,10 +105,3 @@ int main(int argc, char **argv, char **envp)
 	ft_tidyup(&data);
 	return (0);
 }
-
-
-/* 
-this is a test main 
-
-this is a nother test main 
-*/
